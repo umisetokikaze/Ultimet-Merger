@@ -278,11 +278,11 @@ def on_ui_tabs():
                     setMBW = gr.Button(elem_id="copy", value="set to input",variant='primary')
                     readMBW = gr.Button(elem_id="copy", value="read from weight",variant='primary')
                     setXonMBW = gr.Button(elem_id="copytogen", value="set to X",variant='primary')
-                    setMBWBase = gr.Button(elem_id="copy", value="set to beta",variant='primary')
-                    readMBWBase = gr.Button(elem_id="copy", value="read from beta",variant='primary')
+                    setMBWBase = gr.Button(elem_id="copy", value="set to bese",variant='primary')
+                    readMBWBase = gr.Button(elem_id="copy", value="read from base",variant='primary')
                 with gr.Row():
-                    weights_mbw_base = gr.Textbox(label="weights for base(alpha and beta)",value = "0.5,0.5")
                     weights_mbw = gr.Textbox(label="weights for mbw,IN00,IN02,...IN11,M00,OUT00,...,OUT11",value = "0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5")
+                    weights_mbw_base = gr.Textbox(label="weights for base(alpha and beta)",value = "0.5,0.5")
                 with gr.Row():
                     with gr.Column():
                         in00 = gr.Slider(label="IN00", minimum=0, maximum=1, step=0.01, value=0.5)
@@ -298,8 +298,8 @@ def on_ui_tabs():
                         in10 = gr.Slider(label="IN10", minimum=0, maximum=1, step=0.01, value=0.5)
                         in11 = gr.Slider(label="IN11", minimum=0, maximum=1, step=0.01, value=0.5)
                     with gr.Column():
-                        base_alpha = gr.Slider(label="base_alpha", minimum=0, maximum=1, step=0.01, value=0.5)
-                        base_beta = gr.Slider(label="base_beta", minimum=0, maximum=1, step=0.01, value=0.5)
+                        gr.Slider(visible=False)
+                        gr.Slider(visible=False)
                         gr.Slider(visible=False)
                         gr.Slider(visible=False)
                         gr.Slider(visible=False)
@@ -332,7 +332,7 @@ def on_ui_tabs():
                         setalpha = gr.Button(elem_id="copytogen", value="set to alpha",variant='primary')
                         readalpha = gr.Button(elem_id="copytogen", value="read from alpha",variant='primary')
                     with gr.Column():
-                        setbeta = gr.Button(elem_id="copytogen", value="set to alpha",variant='primary')
+                        setbeta = gr.Button(elem_id="copytogen", value="set to beta",variant='primary')
                         readbeta = gr.Button(elem_id="copytogen", value="read from beta",variant='primary')
                     with gr.Row():
                         Swap = gr.Button(elem_id="copytogen", value="Swap input",variant='primary',scale=2)
@@ -344,7 +344,7 @@ def on_ui_tabs():
                         weights_a = gr.Textbox(label="weights for alpha, base alpha,IN00,IN02,...IN11,M00,OUT00,...,OUT11",value = "0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5")
                         weights_b = gr.Textbox(label="weights,for beta, base beta,IN00,IN02,...IN11,M00,OUT00,...,OUT11",value = "0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2")
                     with gr.Column():
-                        weights_base = gr.Textbox(label="base,medA,medB ",value="0,0.5,0.5")
+                        weights_base = gr.Textbox(label="medA,medB ",value="0.5,0.5")
                 with gr.Row():
                     with gr.Column():
                         sl_IN_A_00 = gr.Slider(label="IN_A_00", minimum=0, maximum=1, step=0.01, value=0.5, elem_id="sl_IN_A_00")
@@ -383,7 +383,7 @@ def on_ui_tabs():
                         gr.Slider(visible=False)
                         gr.Slider(visible=False)
                         gr.Slider(visible=False)
-                        sl_Base_00 = gr.Slider(label="base", minimum=0, maximum=1, step=0.01, value=0.5, elem_id="base")
+                        gr.Slider(visible=False)
                         sl_M_A_00 = gr.Slider(label="M_A_00", minimum=0, maximum=1, step=0.01, value=0.5, elem_id="sl_M_A_00")
                     with gr.Column():
                         gr.Slider(visible=False)
@@ -579,7 +579,7 @@ def on_ui_tabs():
         xysettings=[x_type,xgrid,y_type,ygrid,esettings]
         MBWmenbers = [in00,in01,in02,in03,in04,in05,in06,in07,in08,in09,in10,in11,ou00,ou01,ou02,ou03,ou04,ou05,ou06,ou07,ou08,ou09,ou10,ou11]
         MBWbases = [base_alpha,base_beta]
-        base = [sl_Base_00,sl_M_A_00,sl_M_B_00]
+        base = [sl_M_A_00,sl_M_B_00]
         Amenbers = [sl_IN_A_00, sl_IN_A_01, sl_IN_A_02, sl_IN_A_03, sl_IN_A_04, sl_IN_A_05,sl_IN_A_06,
                         sl_IN_A_07, sl_IN_A_08,sl_IN_A_09, sl_IN_A_10, sl_IN_A_11,
                         sl_OUT_A_00, sl_OUT_A_01, sl_OUT_A_02, sl_OUT_A_03, sl_OUT_A_04, sl_OUT_A_05,
@@ -604,7 +604,7 @@ def on_ui_tabs():
                         sl_IN_B_00, sl_IN_B_01, sl_IN_B_02, sl_IN_B_03, sl_IN_B_04, sl_IN_B_05,
                         sl_IN_B_06, sl_IN_B_07, sl_IN_B_08, sl_IN_B_09, sl_IN_B_10, sl_IN_B_11,
                         sl_OUT_B_00, sl_OUT_B_01, sl_OUT_B_02, sl_OUT_B_03, sl_OUT_B_04, sl_OUT_B_05,
-                        sl_OUT_B_06, sl_OUT_B_07, sl_OUT_B_08, sl_OUT_B_09, sl_OUT_B_10, sl_OUT_B_11,sl_M_A_00,sl_M_B_00,sl_Base_00,radio_position_ids,txt_multi_process_cmd,useeach],
+                        sl_OUT_B_06, sl_OUT_B_07, sl_OUT_B_08, sl_OUT_B_09, sl_OUT_B_10, sl_OUT_B_11,sl_M_A_00,sl_M_B_00,radio_position_ids,txt_multi_process_cmd,useeach],
             outputs=[submit_result, cm]
         )
         mergeandgen.click(
@@ -618,7 +618,7 @@ def on_ui_tabs():
                         sl_IN_B_00, sl_IN_B_01, sl_IN_B_02, sl_IN_B_03, sl_IN_B_04, sl_IN_B_05,
                         sl_IN_B_06, sl_IN_B_07, sl_IN_B_08, sl_IN_B_09, sl_IN_B_10, sl_IN_B_11,
                         sl_OUT_B_00, sl_OUT_B_01, sl_OUT_B_02, sl_OUT_B_03, sl_OUT_B_04, sl_OUT_B_05,
-                        sl_OUT_B_06, sl_OUT_B_07, sl_OUT_B_08, sl_OUT_B_09, sl_OUT_B_10, sl_OUT_B_11,sl_M_A_00,sl_M_B_00,sl_Base_00,radio_position_ids,txt_multi_process_cmd,useeach],
+                        sl_OUT_B_06, sl_OUT_B_07, sl_OUT_B_08, sl_OUT_B_09, sl_OUT_B_10, sl_OUT_B_11,sl_M_A_00,sl_M_B_00,radio_position_ids,txt_multi_process_cmd,useeach],
             outputs=[submit_result, cm,*imagegal]
         )
         gen.click(
@@ -669,8 +669,8 @@ def on_ui_tabs():
         setbase.click(fn=text2base,inputs=weights_base,outputs=[*base])
         setalpha.click(fn=slider2mod,inputs=Amenbers,outputs=[weights_a])
         setbeta.click(fn=slider2mod,inputs=Bmenbers,outputs=[weights_b])
-        setMBW.click(fn=slider2mod,inputs=MBWmenbers,outputs=[weights_mbw_base])
-        setMBWBase.click(fn=slider2mod,inputs=MBWbases,outputs=[weights_mbw])
+        setMBW.click(fn=slider2mod,inputs=MBWmenbers,outputs=[weights_mbw])
+        setMBWBase.click(fn=slider2mod,inputs=MBWbases,outputs=[weights_mbw_base])
 
         setXonMBW.click(fn=add_to_seq,inputs=[xgrid,weights_mbw],outputs=[xgrid])
         setalphaX.click(fn=add_to_seq,inputs=[xgrid,weights_a],outputs=[xgrid])
@@ -827,8 +827,8 @@ def text2base(text):
     vals = [t.strip() for t in text.split(",")]
     return [gr.update(value = float(v)) for v in vals]
 
-def base2text(a,c,d):
-    numbers = [a,c,d]
+def base2text(a,c):
+    numbers = [a,c]
     numbers = [str(x) for x in numbers]
     return gr.update(value = ",".join(numbers) )
 
@@ -917,7 +917,7 @@ def each_merger(model_a,model_b,
     sl_IN_B_06, sl_IN_B_07, sl_IN_B_08, sl_IN_B_09, sl_IN_B_10, sl_IN_B_11,
     sl_M_B_00,
     sl_OUT_B_00, sl_OUT_B_01, sl_OUT_B_02, sl_OUT_B_03, sl_OUT_B_04, sl_OUT_B_05,
-    sl_OUT_B_06, sl_OUT_B_07, sl_OUT_B_08, sl_OUT_B_09, sl_OUT_B_10, sl_OUT_B_11, sl_Base_00,submit_result
+    sl_OUT_B_06, sl_OUT_B_07, sl_OUT_B_08, sl_OUT_B_09, sl_OUT_B_10, sl_OUT_B_11,submit_result
     ):
 
         _weight_A = ",".join(
@@ -992,7 +992,7 @@ sl_OUT_A_06, sl_OUT_A_07, sl_OUT_A_08, sl_OUT_A_09, sl_OUT_A_10, sl_OUT_A_11,
 sl_IN_B_00, sl_IN_B_01, sl_IN_B_02, sl_IN_B_03, sl_IN_B_04, sl_IN_B_05,
 sl_IN_B_06, sl_IN_B_07, sl_IN_B_08, sl_IN_B_09, sl_IN_B_10, sl_IN_B_11,
 sl_OUT_B_00, sl_OUT_B_01, sl_OUT_B_02, sl_OUT_B_03, sl_OUT_B_04, sl_OUT_B_05,
-sl_OUT_B_06, sl_OUT_B_07, sl_OUT_B_08, sl_OUT_B_09, sl_OUT_B_10, sl_OUT_B_11, sl_M_A_00,sl_M_B_00,sl_Base_00, radio_position_ids,submit_result,useeach):
+sl_OUT_B_06, sl_OUT_B_07, sl_OUT_B_08, sl_OUT_B_09, sl_OUT_B_10, sl_OUT_B_11, sl_M_A_00,sl_M_B_00, radio_position_ids,submit_result,useeach):
     if useeach == False:
         print("Skip Each mode")
         weights_a,weights_b = block_merger(in00,in01,in02,in03,in04,in05,in06,in07,in08,in09,in10,in11,ou00,ou01,ou02,ou03,ou04,ou05,ou06,ou07,ou08,ou09,ou10,ou11)
@@ -1023,8 +1023,6 @@ sl_OUT_B_06, sl_OUT_B_07, sl_OUT_B_08, sl_OUT_B_09, sl_OUT_B_10, sl_OUT_B_11, sl
         sl_M_B_00,
         sl_OUT_B_00, sl_OUT_B_01, sl_OUT_B_02, sl_OUT_B_03, sl_OUT_B_04, sl_OUT_B_05,
         sl_OUT_B_06, sl_OUT_B_07, sl_OUT_B_08, sl_OUT_B_09, sl_OUT_B_10, sl_OUT_B_11, base_alpha,submit_result)
-        base_alpha = sl_Base_00
-        base_beta = sl_Base_00
         print("start Each")
         img = ""
         if imggen == False:
