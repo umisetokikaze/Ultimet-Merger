@@ -12,7 +12,7 @@ from safetensors.torch import load_file, save_file
 from typing import List
 from tqdm import tqdm
 from modules import  sd_models,scripts
-from scripts.mergers.model_util import load_models_from_stable_diffusion_checkpoint,filenamecutter,savemodel
+from scripts.merge_utils.utils import load_models_from_stable_diffusion_checkpoint,filenamecutter,savemodel
 from modules.ui import create_refresh_button
 
 def on_ui_tabs():
